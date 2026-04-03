@@ -1,0 +1,43 @@
+.footer {
+  width: 100%;
+  padding: 6rem 0 3rem;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+  color: var(--secondary);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.copy {
+  font-size: 0.85rem;
+}
+
+.social {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.link {
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: var(--accent);
+}

@@ -1,0 +1,206 @@
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding: 10rem 0 8rem;
+  min-height: 90vh;
+}
+
+.heroContent {
+  flex: 1.2;
+}
+
+.heroVisual {
+  flex: 0.8;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+
+.badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.title {
+  font-size: 4.5rem;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  font-weight: 800;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: var(--secondary);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.cta {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.primaryBtn {
+  padding: 1.2rem 3rem;
+  border-radius: 100px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: var(--blue-glow);
+  color: white;
+  text-align: center;
+}
+
+.primaryBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+
+.secondaryBtn {
+  padding: 1.2rem 3rem;
+  color: var(--primary);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.secondaryBtn:hover {
+  color: var(--accent);
+}
+
+/* New Sections for 3+ Page Scroll */
+
+.values, .skills, .glossary, .labPreview, .finalCta {
+  padding: 10rem 0; /* Huge vertical spacing for scroll feel */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.sectionTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.sectionSubtitle {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.valueGrid, .labGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.skillItem {
+  padding: 3rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.skillItem:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+}
+
+.skillIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.glossaryInner {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.glossaryList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.glossaryItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border-left: 4px solid var(--accent);
+}
+
+.term {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.def {
+  color: var(--secondary);
+  font-size: 0.95rem;
+}
+
+.labCard {
+  transition: all 0.3s ease;
+}
+
+.labCard:hover {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.finalCta {
+  text-align: center;
+  border-bottom: none;
+}
+
+.finalCta div {
+  padding: 6rem;
+  border-radius: 48px;
+}
+
+.finalCta h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 6rem;
+  }
+  
+  .valueGrid, .skillsGrid, .labGrid, .glossaryInner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .title {
+    font-size: 3rem;
+  }
+}
