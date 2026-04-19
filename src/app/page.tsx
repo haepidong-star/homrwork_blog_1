@@ -1,152 +1,197 @@
-import styles from './page.module.css';
-import CodeSnippet from '@/components/CodeSnippet';
+import { blogLogs } from '@/data/blogData';
+import TechProgressBar from '@/components/TechProgressBar';
 
 export default function Home() {
-  const heroCode = `
-#include <stdio.h>
-
-int main() {
-    char* name = "SHIN DONG GYU";
-    int studentID = 20263207;
-    
-    printf("Future Software Engineer: %s\\n", name);
-    printf("Student ID: %d\\n", studentID);
-    printf("Status: Initializing Dream...\\n");
-    
-    return 0;
-}
-  `;
-
   const skills = [
-    { title: "C Language", desc: "기초 문법 및 포인터, 메모리 관리 학습 중", icon: "💎" },
-    { title: "Next.js", desc: "React 기반 프레임워크를 활용한 웹 프런트엔드 관심", icon: "⚡" },
-    { title: "Python", desc: "데이터 분석 및 업무 자동화 기초 활용 가능", icon: "🐍" },
-    { title: "Git/GitHub", desc: "버전 관리 및 협업을 위한 기초 도구 활용", icon: "📂" },
-    { title: "Linux/WSL", desc: "개발 환경 구축 및 기본 커맨드 실행 가능", icon: "🐧" },
-    { title: "Problem Solving", desc: "알고리즘을 통한 논리적 문제 해결 능력 함양", icon: "🧩" }
-  ];
-
-  const glossary = [
-    { term: "Pointer", def: "메모리의 주소값을 저장하는 변수로, C언어의 핵심 개념" },
-    { term: "Recursion", def: "함수가 자기 자신을 호출하여 문제를 해결하는 기법" },
-    { term: "Data Structure", def: "데이터를 효율적으로 저장하고 관리하기 위한 구조" },
-    { term: "Algorithm", def: "어떤 문제를 해결하기 위해 정해진 일련의 절차" }
+    { title: "HTML5_SEMANTICS", icon: "html", color: "text-primary" },
+    { title: "REACT_ENGINEERING", icon: "javascript", color: "text-secondary" },
+    { title: "TAILWIND_UX", icon: "css", color: "text-tertiary" },
+    { title: "SHELL_ARCH", icon: "terminal", color: "text-primary" },
+    { title: "SQL_STRUCTURE", icon: "database", color: "text-secondary" },
+    { title: "DATA_VISUALS", icon: "monitoring", color: "text-tertiary" }
   ];
 
   return (
-    <div className="container">
-      {/* 1. Hero Section (Scroll Page 1) */}
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <span className={`${styles.badge} blue-glow`}>Computer Software Engineering</span>
-          <h1 className={styles.title}>
-            Designing the Future <br /> 
-            <span className="accent-text">One Line of Code</span> <br /> 
-            at a Time.
+    <div className="space-y-0">
+      {/* 1. Hero Section */}
+      <section id="hero" className="relative px-8 md:px-16 flex flex-col xl:flex-row items-center justify-between gap-12 overflow-hidden border-b border-white/5 snap-start min-h-screen py-20">
+        <div className="relative z-10 max-w-2xl">
+          <div className="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary font-headline text-xs tracking-widest uppercase mb-6">
+            사용자 프로필 // 인증됨
+          </div>
+          <h1 className="text-6xl md:text-8xl font-black font-headline tracking-tighter leading-tight text-on-surface mb-4">
+            SHIN <span className="text-primary glow-cyan">DONG-GYU</span>
           </h1>
-          <p className={styles.description}>
-            안녕하세요, <span className="accent-text">신동규(20263207)</span>입니다. <br />
-            컴퓨터소프트웨어공학부 신입생으로서 현재 C언어의 기초를 탄탄히 다지며 <br />
-            세상을 변화시킬 소프트웨어를 꿈꾸고 있습니다.
+          <p className="text-xl md:text-2xl text-on-surface-variant font-light tracking-tight max-w-xl mb-8">
+            학번: <span className="text-secondary">20263207</span><br />
+            <span className="italic font-bold">DONG GYU의 블로그 입니다.</span>
           </p>
-          <div className={styles.cta}>
-            <a href="/lab" className={`${styles.primaryBtn} glass`}>View C-Lab</a>
-            <a href="/about" className={styles.secondaryBtn}>Learn More</a>
-          </div>
         </div>
-        <div className={styles.heroVisual}>
-          <CodeSnippet code={heroCode} label="main.c" />
+
+        {/* Terminal Visualization with C Code */}
+        <div className="relative w-full max-w-xl aspect-square md:aspect-video bg-surface-container-lowest rounded-lg border border-outline-variant/30 overflow-hidden shadow-2xl">
+          <div className="flex items-center justify-between p-3 bg-surface-container-high border-b border-outline-variant/20">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-error/40"></div>
+              <div className="w-2 h-2 rounded-full bg-secondary/40"></div>
+              <div className="w-2 h-2 rounded-full bg-primary/40"></div>
+              <span className="ml-4 text-[10px] font-headline text-on-surface-variant tracking-widest italic">main.c</span>
+            </div>
+            <span className="text-[10px] font-mono text-primary/60">UTF-8</span>
+          </div>
+          <div className="p-6 font-mono text-sm leading-relaxed overflow-x-auto">
+            <div className="flex gap-4">
+              <span className="text-slate-600 select-none">1</span>
+              <div><span className="text-violet-400">#include</span> <span className="text-cyan-400">&lt;stdio.h&gt;</span></div>
+            </div>
+            <div className="flex gap-4">
+              <span className="text-slate-600 select-none">2</span>
+              <div>&nbsp;</div>
+            </div>
+            <div className="flex gap-4">
+              <span className="text-slate-600 select-none">3</span>
+              <div><span className="text-secondary">int</span> <span className="text-primary">main</span>() {'{'}</div>
+            </div>
+            <div className="flex gap-4">
+              <span className="text-slate-600 select-none">4</span>
+              <div className="pl-4">
+                <span className="text-primary">printf</span>(<span className="text-cyan-400">"Welcome to DONG GYU's Blog\n"</span>);
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <span className="text-slate-600 select-none">5</span>
+              <div className="pl-4">
+                <span className="text-primary">printf</span>(<span className="text-cyan-400">"System Status: Online\n"</span>);
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <span className="text-slate-600 select-none">6</span>
+              <div className="pl-4">
+                <span className="text-violet-400">return</span> <span className="text-secondary">0</span>;
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <span className="text-slate-600 select-none">7</span>
+              <div>{'}'}</div>
+            </div>
+            <div className="flex gap-4 pt-4">
+              <span className="text-slate-600 select-none">8</span>
+              <div className="flex gap-1">
+                <span className="text-primary">λ</span>
+                <div className="w-2 h-5 bg-primary animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute inset-0 opacity-5 pointer-events-none bg-grid"></div>
+        </div>
+        
+        {/* Background Ghost Text */}
+        <div className="absolute -right-20 top-20 text-[20rem] font-headline font-black text-white/[0.02] select-none pointer-events-none">
+          2026
         </div>
       </section>
 
-      {/* 2. Core Value Section (Scroll Page 1.5) */}
-      <section className={styles.values}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>My Philosophy</h2>
-          <p className={styles.sectionSubtitle}>신동규의 개발 철학과 열정</p>
+      {/* 2. CS Philosophy Section */}
+      <section id="philosophy" className="px-8 md:px-16 py-24 bg-surface-container-low border-b border-white/5 snap-start min-h-screen flex flex-col justify-center">
+        <div className="mb-16">
+          <div className="text-primary font-headline text-sm tracking-widest mb-2 uppercase">컴퓨터 공학 // 01</div>
+          <h2 className="text-5xl font-black font-headline tracking-tighter">CS 아카이브 개요</h2>
         </div>
-        <div className={styles.valueGrid}>
-          <div className="card">
-            <h3>Complexity to Simplicity</h3>
-            <p>복잡한 시스템의 이면을 파고들어 가장 단순하고 효율적인 해결책을 찾는 것을 즐깁니다.</p>
-          </div>
-          <div className="card">
-            <h3>Continuous Growth</h3>
-            <p>오늘의 부족함을 학습의 원동력으로 삼아 매일 조금씩 성장하는 엔지니어가 되겠습니다.</p>
-          </div>
-          <div className="card">
-            <h3>Impact on Reality</h3>
-            <p>코드 한 줄이 실제 사용자들에게 긍정적인 경험과 편리함을 줄 수 있다고 믿습니다.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Skills Showcase (Scroll Page 2) */}
-      <section className={styles.skills}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>Tech Stack & Skills</h2>
-          <p className={styles.sectionSubtitle}>현재 다루고 있는 도구와 앞으로 배우고 싶은 기술</p>
-        </div>
-        <div className={styles.skillsGrid}>
-          {skills.map((skill, i) => (
-            <div key={i} className={styles.skillItem}>
-              <div className={styles.skillIcon}>{skill.icon}</div>
-              <h3>{skill.title}</h3>
-              <p>{skill.desc}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { title: "CS 기초 개요", icon: "functions", color: "primary", desc: "컴퓨터의 기본 동작 원리부터 정보 이론까지, 0과 1로 이루어진 디지털 세계의 근간을 탐구합니다." },
+            { title: "C언어 소개 및 예제", icon: "code", color: "secondary", desc: "전 세계 모든 언어의 뿌리가 되는 C언어의 문법과 실무적인 코딩 예시를 통해 프로그래밍의 기초를 다집니다." },
+            { title: "시스템 프로그래밍", icon: "architecture", color: "tertiary", desc: "운영체제와 메모리 구조를 이해하고, 하드웨어 성능을 극대화하는 수준 높은 엔지니어링 지식을 학습합니다." }
+          ].map((v, i) => (
+            <div key={i} className="group relative p-8 bg-surface-container transition-all duration-500 hover:bg-surface-container-high border border-white/5">
+              <div className={`absolute top-0 left-0 w-full h-1 bg-${v.color} opacity-0 group-hover:opacity-100 transition-opacity`}></div>
+              <div className={`mb-6 text-${v.color}`}>
+                <span className="material-symbols-outlined text-4xl">{v.icon}</span>
+              </div>
+              <h3 className="text-2xl font-bold font-headline mb-4 text-on-surface uppercase tracking-tight">{v.title}</h3>
+              <p className="text-on-surface-variant leading-relaxed text-sm">{v.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 4. CS Glossary Peek (Scroll Page 2.5) */}
-      <section className={styles.glossary}>
-        <div className={styles.glossaryInner}>
-          <div className={styles.glossaryText}>
-            <h2 className={styles.sectionTitle}>CS Essential Concepts</h2>
-            <p>신입생이 꼭 알아야 할 전공 기초 용어들을 정리하고 있습니다.</p>
+      {/* 3. 52 Professional CS Logs - Snap Sections */}
+      <section id="cs-logs" className="bg-surface relative overflow-visible">
+        <div className="px-8 md:px-16 py-8 border-b border-white/5 sticky top-20 bg-surface/80 backdrop-blur-md z-20 flex justify-between items-center transition-all">
+          <div>
+            <div className="text-tertiary font-headline text-sm tracking-widest mb-1 uppercase">연대기 // 02</div>
+            <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tighter">전공 아카이브 모음</h2>
           </div>
-          <div className={styles.glossaryList}>
-            {glossary.map((item, i) => (
-              <div key={i} className={styles.glossaryItem}>
-                <span className={styles.term}>{item.term}</span>
-                <span className={styles.def}>{item.def}</span>
+          <div className="text-right">
+            <div className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.2em] mb-1">TOTAL_RECORDS</div>
+            <div className="text-3xl font-headline font-black text-primary">052</div>
+          </div>
+        </div>
+
+        <div className="divide-y divide-white/5">
+          {blogLogs.map((log) => (
+            <div key={log.id} className="group relative px-8 md:px-16 hover:bg-white/[0.02] transition-colors snap-start min-h-screen flex flex-col justify-center py-20">
+              <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 w-full">
+                <div className="lg:w-1/4">
+                  <div className={`text-${log.color} font-mono text-xs mb-4 tracking-widest opacity-70`}>{log.tag}</div>
+                  <div className="text-7xl font-headline font-black text-white/5 transition-colors mb-4">
+                    {String(log.id).padStart(3, '0')}
+                  </div>
+                  <div className="text-[10px] font-mono text-on-surface-variant uppercase tracking-widest">일자: {log.date}</div>
+                </div>
+
+                <div className="lg:w-3/4 space-y-6">
+                  <div className={`text-${log.color} font-headline text-xs tracking-widest mb-2 uppercase`}>{log.category}</div>
+                  <h3 className="text-4xl md:text-6xl font-black font-headline tracking-tighter leading-none group-hover:text-primary transition-all">
+                    {log.title}
+                  </h3>
+                  <p className="text-xl text-on-surface-variant leading-relaxed max-w-4xl">
+                    {log.excerpt}
+                  </p>
+
+                  {/* C Code Example Rendering */}
+                  {log.code && (
+                    <div className="mt-8 bg-[#0a0a0f] border border-white/5 rounded-lg overflow-hidden relative group/code shadow-2xl">
+                      <div className="absolute top-0 right-0 p-2 text-[8px] font-mono text-slate-600 tracking-widest uppercase">EXAMPLE_SOURCE</div>
+                      <pre className="p-8 font-mono text-base text-cyan-400 overflow-x-auto leading-relaxed">
+                        <code>{log.code}</code>
+                      </pre>
+                    </div>
+                  )}
+                  
+                  {/* 버튼 삭제됨 */}
+                </div>
+              </div>
+              <div className={`absolute left-0 top-0 bottom-0 w-1 bg-${log.color} opacity-0 group-hover:opacity-100 transition-opacity`}></div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. Tech Stack & Skills */}
+      <section id="tech-stack" className="px-8 md:px-16 py-24 bg-surface-container-low border-t border-white/5 snap-start min-h-screen flex flex-col justify-center">
+        <div className="flex flex-col lg:flex-row gap-16 items-start max-w-7xl mx-auto w-full">
+          <div className="lg:w-1/3">
+            <div className="text-secondary font-headline text-sm tracking-widest mb-2 uppercase">학습 아카이브 // 03</div>
+            <h2 className="text-4xl md:text-5xl font-black font-headline tracking-tighter mb-8 leading-none">전공 지식 총정리</h2>
+            <p className="text-on-surface-variant mb-12 text-sm leading-loose">
+              컴퓨터 공학의 기초부터 심화까지, 52개의 연구 로그를 통해 정립한 전공 지식의 완성도입니다. 
+              이 블로그는 신동규의 학술적 성장과 코드의 진화를 담은 디지털 기록입니다.
+            </p>
+            <div className="space-y-8">
+              <TechProgressBar label="C언어 & 시스템" val="95%" color="primary" />
+              <TechProgressBar label="알고리즘 & 논리" val="82%" color="secondary" />
+              <TechProgressBar label="프론트엔드 기초" val="78%" color="tertiary" />
+            </div>
+          </div>
+          <div className="lg:w-2/3 grid grid-cols-2 sm:grid-cols-3 gap-4 w-full">
+            {skills.map((skill, i) => (
+              <div key={i} className="p-8 bg-surface-container-low border border-outline-variant/10 flex flex-col items-center text-center hover:border-primary/40 transition-all duration-300 group">
+                <span className={`material-symbols-outlined text-4xl mb-6 ${skill.color} opacity-80 group-hover:scale-110 transition-transform`}>{skill.icon}</span>
+                <span className="font-headline font-bold tracking-widest text-[10px] uppercase">{skill.title}</span>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* 5. C-Lab Highlights (Scroll Page 3) */}
-      <section className={styles.labPreview}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>C-Language Lab</h2>
-          <p className={styles.sectionSubtitle}>학습한 연구 과제 중 핵심 요약</p>
-        </div>
-        <div className={styles.labGrid}>
-          <div className={`${styles.labCard} card`}>
-            <h3>01. Identity Program</h3>
-            <p>학번(20263207)과 성함을 출력하는 첫 번째 과제</p>
-            <a href="/lab" className="accent-text">Read More →</a>
-          </div>
-          <div className={`${styles.labCard} card`}>
-            <h3>02. Memory Management</h3>
-            <p>포인터와 동적 할당의 기초 원리 이해</p>
-            <a href="/lab" className="accent-text">Read More →</a>
-          </div>
-          <div className={`${styles.labCard} card`}>
-            <h3>03. Algo Challenge</h3>
-            <p>반복문을 활용한 정밀한 패턴 구현 실험</p>
-            <a href="/lab" className="accent-text">Read More →</a>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Footer Call to Action (Scroll Page 3.5) */}
-      <section className={styles.finalCta}>
-        <div className="glass card">
-          <h2>Ready to Build the Future?</h2>
-          <p>신동규(20263207)와 함께 소프트웨어의 새로운 가능성을 탐구해 보세요.</p>
-          <a href="/contact" className={styles.primaryBtn}>Contact Me</a>
         </div>
       </section>
     </div>
